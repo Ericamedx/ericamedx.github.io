@@ -1,0 +1,64 @@
+h1 {
+    font-family: 'Google Sans', 'Segeo UI';
+    margin-top: 25px;
+}
+
+
+table {
+    text-decoration: none;
+    border: none;
+    border-radius: 9px;
+    font-size: 20px;
+}
+
+.num {
+    background-color: rgb(207, 207, 207);
+    color: rgb(46, 46, 46);
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+    font-size: 22px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.num:hover {
+    background-color: rgba(0, 46, 145, 0.726);
+    color: rgb(209, 209, 209);
+    background-image: url('skin.png');
+}
+
+.active {
+  background-color: #faf205;
+  color: white;
+  background-image: url('skin.png');
+}
+
+h1 {
+    text-align: center;
+}
+
+.show {
+      opacity:1;
+    }
+.hide{
+   opacity:0;
+ }
+
+.sum {
+    color: rgb(47, 99, 167);
+}
+
+#cheers {
+  font-size: 60px;
+  text-align: center;
+  margin-top: 10px;
+  color: #fae105;
+}
+#counter {
+text-align: center;
+}
+li {
+  font-size: 20px;
+
+}

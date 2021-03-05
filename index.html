@@ -1,59 +1,200 @@
-<title>Draw!</title>
 <html>
-<head>
+  <head>
+    <meta charset="UTF-8" />
+    <link href="bingo.css" type="text/css" rel="stylesheet">
 
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest%22%3E"> </script>
+      </head>
+      <body class ="all">
+        <div id = "containerdiv">
 
-<link rel="stylesheet" href="main.css">
-</head>
-<body>
-  <div class="canvasText">
-    <div class="drawing">
-      <canvas id="canvas" width="500" height="500"></canvas>
-    </div>
+        <h1>☘ Svenska spel bingo ☘</h1>
+        <h3 align='center'>Klicka på knappen för att starta! ➔ <button onclick="Newboard('');">Generera ny bingobricka</button></h3>
+        <h3 align='center'> Mest MC grejer <button onclick="Newboard('MC');"> Generera MC-bricka </button> </h3>
+        <h3 align='center'> Mest BWL grejer <button onclick="Newboard('BWL');">Generera BWL-bricka </button> </h3>
+        <p align='center'>Regler hittar du längst ner</p>
 
-    <div class="text">
-      <p>Här kommer prediction upp!</p>
-    </div>
-  </div>
-</body>
-</html>
+   <div id='table'>
+     <div id="cheers" class="hide">
+       SKÅÅÅÅÅÅÅL!!
+     </div>
+      <div id="bingo" class="hide"> BiNGOOOOO </div>
+     <div id="counter"> Antal bingos: 0, Antal skål: 0 </div>
+       <table align="center" valign="middle">
+           <tr>
+               <td id="1" class="num" onclick="tdclick(this);"></td>
+               <td id="2" class="num" onclick="tdclick(this);"></td>
+               <td id="3" class="num" onclick="tdclick(this);"></td>
+               <td id="4" class="num" onclick="tdclick(this);"></td>
+               <td id="5" class="num" onclick="tdclick(this);"></td>
+           </tr>
+           <tr>
+               <td id="6" class="num" onclick="tdclick(this);"></td>
+               <td id="7" class="num" onclick="tdclick(this);"></td>
+               <td id="8" class="num" onclick="tdclick(this);"></td>
+               <td id="9" class="num" onclick="tdclick(this);"></td>
+               <td id="10" class="num" onclick="tdclick(this);"></td>
+           </tr>
+           <tr>
+               <td id="11" class="num" onclick="tdclick(this);"></td>
+               <td id="12" class="num" onclick="tdclick(this);"></td>
+               <td id="13" class="num" onclick="tdclick(this);"></td>
+               <td id="14" class="num" onclick="tdclick(this);"></td>
+               <td id="15" class="num" onclick="tdclick(this);"></td>
+           </tr>
+           <tr>
+               <td id="16" class="num" onclick="tdclick(this);"></td>
+               <td id="17" class="num" onclick="tdclick(this);"></td>
+               <td id="18" class="num" onclick="tdclick(this);"></td>
+               <td id="19" class="num" onclick="tdclick(this);"></td>
+               <td id="20" class="num" onclick="tdclick(this);"></td>
+           </tr>
+           <tr>
+               <td id="21" class="num" onclick="tdclick(this);"></td>
+               <td id="22" class="num" onclick="tdclick(this);"></td>
+               <td id="23" class="num" onclick="tdclick(this);"></td>
+               <td id="24" class="num" onclick="tdclick(this);"></td>
+               <td id="25" class="num" onclick="tdclick(this);"></td>
+           </tr>
+       </table>
 
-<script type="text/javascript">
-  // create canvas element and append it to document body
-var canvas = document.getElementById('canvas');
-document.body.appendChild(canvas);
+
+   </div>
+
+   <h2 align='center'>Regler!</h3>
+   <ul >
+     <li>Inget fusk!</li>
+     <li>För varje i kryssad ruta - ta en klunk</li>
+     <li>Vid bingo - drick upp glaset</li>
+     <li>Tråkig attityd resulterar i avstägning och skammvrå</li>
+     <li>Försten till bingo vinner äran</li>
+   </ul>
+   </div>
+   <script>
+   var checked = [];
+   var bingoArray = [];
+   var counterskål = 0;
+   var counterbingo = 0;
+   function unique(val, idx, self) {
+            return self.indexOf(val) === idx;
+        }
+   function tdclick(e) {
+     console.log(e.style.backgroundColor)
+     if(e.className == "num active"){
+       e.className = "num";
+       counterskål -= 1;
+     }
+     else{
+     e.className += " active";
+     counterskål += 1;
+     }
+     var justchecked = parseInt(e.id);
+     checked.push(justchecked);
+     checked = checked.filter(unique);
+     showcheers();
+     //activeboxes = activeboxes.filter(unique);
+
+       for (let i = 0; i < bingoArray.length; i++) {
+                      if (
+                          bingoArray[i].every(
+                              j => checked.includes(j))
+
+                          ){
+                          counterbingo += 1;
+                          showbingo();
+                          console.log("test");
+                          bingoArray.splice(i, 1);
+                          }
+
+                          //var div3 = document.getElementById("bingo");
+                          //div3.innerHTML = "BINGOOOOO";
+
+                          //console.log(bingoArray[i], checked, p.currentPoint());
+
+                }
+    counterdiv = document.getElementById("counter");
+     counterdiv.innerHTML = "Antal bingos: " + counterbingo.toString() + ", Antal skål: " + counterskål.toString();
+   }
+   function showbingo()
+   {
+     var div2 = document.getElementById("cheers");
+     div2.className="show";
+     div2.innerHTML = "BINGO, plötsligt händer det";
+     setTimeout(function() {
+       div2.className="hide";
+     }, 3000);
+   }
+   function showcheers()
+   {
+     var div2 = document.getElementById("cheers");
+     div2.className="show";
+     div2.innerHTML = "SKÅÅÅÅL!!";
+     setTimeout(function() {
+       div2.className="hide";
+     }, 3000);
+   }
+   function Newboard(raid)
+   {
+
+     counterskål = 0;
+     counterbingo = 0;
+    counterdiv = document.getElementById("counter");
+    counterdiv.innerHTML = "Antal bingos: " + counterbingo.toString() + ", Antal skål: " + counterskål.toString();
+       bingoArray = [
+           [1, 2, 3, 4, 5],
+           [6, 7, 8, 9, 10],
+           [11, 12, 13, 14, 15],
+           [16, 17, 18, 19, 20],
+           [21, 22, 23, 24, 25],
+           [1, 6, 11, 16, 21],
+           [2, 7, 12, 17, 22],
+           [3, 8, 13, 18, 23],
+           [4, 9, 14, 19, 24],
+           [5, 10, 15, 20, 25],
+           [1, 7, 13, 19, 25],
+           [5, 9, 13, 17, 21]
+       ];
+     checked = [];
+     var ids = [];
+     if(raid == ''){
+     all = ['STEN', 'Phistr nämner "noten"', 'Lovecakes bakgrundsmusik livar upp', 'Någon hänger löst', 'Pinkman sprider bra vibbar',
+      'Någon spelar bort sitt guld', 'Pawlin dör', 'Migrän förklarar LOS', 'Seawylls bebis joinar discord', 'Danebanane tranqar', 'Någon annan får bingo',
+      'Deeee rosé', 'En bra BoE droppar', 'Cala o Erica blir mixed upp', '60% mount påverkar kollektivet', 'Aftonbladet distraherar', 'Fatfingrar cds',
+      'Någon glömmer byta till ony-cloak', 'Pinkman ger någon beröm', 'Favre vill ha summon', 'Något är känsligt mot nature',
+      'En warlock lägger en riktigt bra banish', 'Alla är redo vid en readycheck', 'Någon börjar bli full', 'Ninjapull på Broodlord', 'Vi wipear',
+      'Corona vibes', 'Rouge/hunter klarar sig från wipe', 'Pinkman drar en underlig anekdot', 'Warlocks glömmer lägga soulstone',
+      'Mamma och pappa håller sams', 'Larsfilipssn förlorar sina buffs', 'Carrot on a stick', 'Jutastre/Erica nämner Nostalgi', 'Cala/Nohl nämner retail',
+      'Heisenberg sprider bra vibbar', 'Pinkman får sin binding (botten upp)', 'Ett BIS vapen droppar(Botten upp)', 'Phistr behöver påminna LC om att rösta', 'Tiberion får sin binding (botten upp)']
+      }
+      if(raid == 'BWL'){
+      all = ['Phistr nämner "noten"', 'Någon hänger löst', 'Pinkman sprider bra vibbar','Någon spelar bort sitt guld', 'Pawlin dör', 'Migrän förklarar LOS', 'Danebanane/Favre tranqar',
+      'Någon annan får bingo', 'Lovecakes bakgrundsmusik livar upp', 'Deeee rosé', 'En bra BoE droppar', 'Cala o Erica blir mixed upp', 'Aftonbladet distraherar',
+      'Fatfingrar cds', 'Någon glömmer byta till ony-cloak', 'Något är känsligt mot nature',
+         'Alla är redo vid en readycheck', 'Någon har blivit full', 'Ninjapull på Broodlord', 'Vi wipear', 'Corona vibes', 'Rouge/hunter klarar sig från wipe', 'Warlocks glömmer lägga soulstone',
+         'Mamma och pappa håller sams', 'Larsfilipssn förlorar sina buffs', 'Jutastre/Erica nämner Nostalgi', 'Cala/Nohl nämner retail', 'Heisenberg sprider bra vibbar', 'Phistr behöver påminna LC om att rösta', 'Ett BIS vapen droppar(Botten upp)']
+      }
+      if(raid == 'MC'){
+       all = ['STEN', 'Phistr nämner "noten"','Någon spelar bort sitt guld', 'Pawlin dör', 'Seawylls bebis joinar discord',
+         'Deeee rosé', 'Cala o Erica blir mixed upp', '60% mount påverkar kollektivet', 'Aftonbladet distraherar', 'Fatfingrar cds', 'Pinkman ger någon beröm', 'Favre vill ha summon',
+         'En warlock lägger en riktigt bra banish', 'Alla är redo vid en readycheck', 'Någon börjar bli full', 'Corona vibes', 'Rouge/hunter klarar sig från wipe',
+         'Pinkman drar en underlig anekdot', 'Mamma och pappa håller sams', 'Larsfilipssn förlorar sina buffs', 'Carrot on a stick', 'Jutastre/Erica nämner Nostalgi',
+         'Cala/Nohl nämner retail', 'Heisenberg sprider bra vibbar', 'Pinkman får sin binding (botten upp)', 'Någon är full när vi börjar', 'Phistr behöver påminna LC om att rösta', 'Tiberion får sin binding (botten upp)']
+      }
+    // Saker som inte är aktuella denna raid: 'Larsfilipssn förlorar sina buffs'
+    size = 25;
+    resultingboard = [0] * size;
+    for (let i = 1; i <= size; i++){
+    index = Math.floor(Math.random() * all.length)
+    resultingboard[i] = all[index]
+    document.getElementById(i.toString()).innerHTML = all[index];
+    document.getElementById(i.toString()).className = "num";
+    all.splice(index, 1);
+
+   }
+   //data = resultingboard;
+   //document.getElementById('1').innerHTML = 'test';
+   }
+    </script>
 
 
-// get canvas 2D context and set him correct size
-var ctx = canvas.getContext('2d');
-
-// last known position
-var pos = { x: 0, y: 0 };
-
-document.addEventListener('mousemove', draw);
-document.addEventListener('mousedown', setPosition);
-document.addEventListener('mouseenter', setPosition);
-
-// new position from mouse event
-function setPosition(e) {
-  pos.x = e.clientX;
-  pos.y = e.clientY;
-}
-
-function draw(e) {
-  if (e.buttons !== 1) return;
-
-  ctx.beginPath(); // begin
-
-  ctx.lineWidth = 3;
-  ctx.lineCap = 'round';
-  ctx.strokeStyle = '#7f27ab';
-
-  ctx.moveTo(pos.x, pos.y); // from
-  setPosition(e);
-  ctx.lineTo(pos.x, pos.y); // to
-
-  ctx.stroke(); // draw it!
-}
-</script>
+      </body>
+    </html>
