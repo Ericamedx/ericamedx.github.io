@@ -7,10 +7,10 @@
       <body class ="all">
         <div id = "containerdiv">
 
-        <h1>☘ Svenska spel bingo ☘</h1>
+        <h1>☘ Bingo ☘</h1>
         <h3 align='center'>Klicka på knappen för att starta! ➔ <button onclick="Newboard('');">Generera ny bingobricka</button></h3>
-        <h3 align='center'> Mest MC grejer <button onclick="Newboard('MC');"> Generera MC-bricka </button> </h3>
-        <h3 align='center'> Mest BWL grejer <button onclick="Newboard('BWL');">Generera BWL-bricka </button> </h3>
+      <!--  <h3 align='center'> Mest MC grejer <button onclick="Newboard('MC');"> Generera MC-bricka </button> </h3>
+        <h3 align='center'> Mest BWL grejer <button onclick="Newboard('BWL');">Generera BWL-bricka </button> </h3>-->
         <p align='center'>Regler hittar du längst ner</p>
 
    <div id='table'>
@@ -118,7 +118,7 @@
    {
      var div2 = document.getElementById("cheers");
      div2.className="show";
-     div2.innerHTML = "BINGO, plötsligt händer det";
+     div2.innerHTML = "BINGO";
      setTimeout(function() {
        div2.className="hide";
      }, 3000);
@@ -156,28 +156,11 @@
      checked = [];
      var ids = [];
      if(raid == ''){
-     all = ['STEN', 'Phistr nämner "noten"', 'Lovecakes bakgrundsmusik livar upp', 'Någon hänger löst', 'Pinkman sprider bra vibbar',
-      'Någon spelar bort sitt guld', 'Pawlin dör', 'Migrän förklarar LOS', 'Seawylls bebis joinar discord', 'Danebanane tranqar', 'Någon annan får bingo',
-      'Deeee rosé', 'En bra BoE droppar', 'Cala o Erica blir mixed upp', '60% mount påverkar kollektivet', 'Aftonbladet distraherar', 'Fatfingrar cds',
-      'Någon glömmer byta till ony-cloak', 'Pinkman ger någon beröm', 'Favre vill ha summon', 'Något är känsligt mot nature',
-      'En warlock lägger en riktigt bra banish', 'Alla är redo vid en readycheck', 'Någon börjar bli full', 'Ninjapull på Broodlord', 'Vi wipear',
-      'Corona vibes', 'Rouge/hunter klarar sig från wipe', 'Pinkman drar en underlig anekdot', 'Warlocks glömmer lägga soulstone',
-      'Mamma och pappa håller sams', 'Larsfilipssn förlorar sina buffs', 'Carrot on a stick', 'Jutastre/Erica nämner Nostalgi', 'Cala/Nohl nämner retail',
-      'Heisenberg sprider bra vibbar', 'Pinkman får sin binding (botten upp)', 'Ett BIS vapen droppar(Botten upp)', 'Phistr behöver påminna LC om att rösta', 'Tiberion får sin binding (botten upp)']
-      }
-      if(raid == 'BWL'){
-      all = ['Phistr nämner "noten"', 'Någon hänger löst', 'Pinkman sprider bra vibbar','Någon spelar bort sitt guld', 'Pawlin dör', 'Migrän förklarar LOS', 'Danebanane/Favre tranqar',
-      'Någon annan får bingo', 'Lovecakes bakgrundsmusik livar upp', 'Deeee rosé', 'En bra BoE droppar', 'Cala o Erica blir mixed upp', 'Aftonbladet distraherar',
-      'Fatfingrar cds', 'Någon glömmer byta till ony-cloak', 'Något är känsligt mot nature',
-         'Alla är redo vid en readycheck', 'Någon har blivit full', 'Ninjapull på Broodlord', 'Vi wipear', 'Corona vibes', 'Rouge/hunter klarar sig från wipe', 'Warlocks glömmer lägga soulstone',
-         'Mamma och pappa håller sams', 'Larsfilipssn förlorar sina buffs', 'Jutastre/Erica nämner Nostalgi', 'Cala/Nohl nämner retail', 'Heisenberg sprider bra vibbar', 'Phistr behöver påminna LC om att rösta', 'Ett BIS vapen droppar(Botten upp)']
-      }
-      if(raid == 'MC'){
-       all = ['STEN', 'Phistr nämner "noten"','Någon spelar bort sitt guld', 'Pawlin dör', 'Seawylls bebis joinar discord',
-         'Deeee rosé', 'Cala o Erica blir mixed upp', '60% mount påverkar kollektivet', 'Aftonbladet distraherar', 'Fatfingrar cds', 'Pinkman ger någon beröm', 'Favre vill ha summon',
-         'En warlock lägger en riktigt bra banish', 'Alla är redo vid en readycheck', 'Någon börjar bli full', 'Corona vibes', 'Rouge/hunter klarar sig från wipe',
-         'Pinkman drar en underlig anekdot', 'Mamma och pappa håller sams', 'Larsfilipssn förlorar sina buffs', 'Carrot on a stick', 'Jutastre/Erica nämner Nostalgi',
-         'Cala/Nohl nämner retail', 'Heisenberg sprider bra vibbar', 'Pinkman får sin binding (botten upp)', 'Någon är full när vi börjar', 'Phistr behöver påminna LC om att rösta', 'Tiberion får sin binding (botten upp)']
+     all = ['Softtaco är snål', 'Duy får minirage', 'Macho convokar i fel form', 'Razz hypar spirit shell', '"Jag får panik" -Virre',
+      'Moff spiller te', 'Dande har fel legendary/spec', 'Jheff roleplayar hitler', 'Nocco hype', 'Silverskips kommer med "tips"', 'Duy har micen i ett annat rum',
+      'Dogge lvlar ny alt', 'Wipe', 'Macho äter lite mycket bananbröd', '"Kan jag få PI?"', 'Erik är umeeeeega lugn', 'Razz klagar på timings',
+      'Tysu torskar deathroll', 'Wabos kan inte interupta denna', 'Borrina missar demon spikes', 'Bettan får stroke',
+      'Laserbritta och Grille simmar lägre än din alt', 'Jordbäret snackar danska', 'Någon börjar bli full', '"Innervate softtaco"', '"Rip! Inge full moon"']
       }
     // Saker som inte är aktuella denna raid: 'Larsfilipssn förlorar sina buffs'
     size = 25;
